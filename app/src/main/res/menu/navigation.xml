@@ -21,9 +21,14 @@
         android:icon="@drawable/common_google_signin_btn_text_dark"
         android:title="@string/title_weather"/>
 
-    <item
+<!--    <item
         android:id="@+id/navigation_database"
         android:title="@string/title_database"
-        android:icon="@drawable/ic_dns_black"/>
+        android:icon="@drawable/ic_dns_black"/>-->
+
+    <item
+        android:id="@+id/navigation_imageview"
+        android:title="ImageView"
+        android:icon="@drawable/ic_perm_media_black_24dp"/>
 
 </menu>
