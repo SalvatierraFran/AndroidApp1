@@ -55,21 +55,21 @@ public class MainActivity extends AppCompatActivity {
                     ft.commit();
                     return true;
 
-                /*case R.id.navigation_database:
+                case R.id.navigation_database:
 
                     currentFrag = new DbFragment();
                     ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.miContainer, currentFrag);
                     ft.commit();
-                    return true;*/
+                    return true;
 
-                case R.id.navigation_imageview:
+                /*case R.id.navigation_imageview:
 
                     currentFrag = new ImageFragment();
                     ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.miContainer, currentFrag);
                     ft.commit();
-                    return true;
+                    return true;*/
             }
 
             return true;

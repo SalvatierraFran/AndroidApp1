@@ -22,11 +22,13 @@ public class ImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        this.getActivity().setContentView(R.layout.fragment_image);
+        View v = inflater.inflate(R.layout.fragment_image, container, false);
 
-        imagen = (ImageView)this.getActivity().findViewById(R.id.image_iv);
+        //this.getActivity().setContentView(R.layout.fragment_image);
 
-        Button miBtn = (Button)this.getActivity().findViewById(R.id.image_btn);
+        imagen = (ImageView)v.findViewById(R.id.image_iv);
+
+        Button miBtn = (Button)v.findViewById(R.id.image_btn);
 
         miBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -36,7 +38,9 @@ public class ImageFragment extends Fragment {
         });
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_image, container, false);
+
+        return v;
+        //return inflater.inflate(R.layout.fragment_image, container, false);
     }
 
     public void buttonOnAction()

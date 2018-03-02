@@ -37,18 +37,22 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View v = inflater.inflate(R.layout.fragment_weather, container, false);
+
         if(GuardarHora()){
             getDataFromService();
         }else{
-            getDataFromDB();
+            getDataFromDB(v);
         }
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather, container, false);
+        //return inflater.inflate(R.layout.fragment_weather, container, false);
+        return v;
     }
 
-    private void getDataFromDB() {
+    private void getDataFromDB(View v) {
+
         WeatherDbHelper conn = new WeatherDbHelper(this.getContext(), "WeatherDB", null, WeatherDbHelper.DATABASE_VERSION);
 
         SQLiteDatabase db = conn.getWritableDatabase();
@@ -63,29 +67,29 @@ public class WeatherFragment extends Fragment {
             }while(c.moveToNext());
         }
 
-        this.getActivity().setContentView(R.layout.fragment_weather);
+        //this.getActivity().setContentView(R.layout.fragment_weather);
 
-        TextView ciudadTv = (TextView)this.getActivity().findViewById(R.id.weather_name);
+        TextView ciudadTv = (TextView)v.findViewById(R.id.weather_name);
         ciudadTv.setText(lista.get(0).getCiudad());
 
-        TextView descTv = (TextView)this.getActivity().findViewById(R.id.weather_desc);
+        TextView descTv = (TextView)v.findViewById(R.id.weather_desc);
         descTv.setText(lista.get(0).getDesc());
 
-        TextView tempTv = (TextView)this.getActivity().findViewById(R.id.weather_temp);
+        TextView tempTv = (TextView)v.findViewById(R.id.weather_temp);
         tempTv.setText(lista.get(0).getTemp());
 
-        TextView minTv = (TextView)this.getActivity().findViewById(R.id.weather_tempmin);
+        TextView minTv = (TextView)v.findViewById(R.id.weather_tempmin);
         minTv.setText(lista.get(0).getMin());
 
-        TextView maxTv = (TextView)this.getActivity().findViewById(R.id.weather_tempmax);
+        TextView maxTv = (TextView)v.findViewById(R.id.weather_tempmax);
         maxTv.setText(lista.get(0).getMax());
 
-        TextView humedadTv = (TextView)this.getActivity().findViewById(R.id.weather_humidity);
+        TextView humedadTv = (TextView)v.findViewById(R.id.weather_humidity);
         humedadTv.setText(lista.get(0).getHumedad());
 
 
-        this.getActivity().setContentView(R.layout.activity_main);
-        mButtonNav = (BottomNavigationView)this.getActivity().findViewById(R.id.navigation);
+        /*this.getActivity().setContentView(R.layout.activity_main);
+        mButtonNav = (BottomNavigationView)this.getActivity().findViewById(R.id.navigation);*/
     }
 
     public void getDataFromService()

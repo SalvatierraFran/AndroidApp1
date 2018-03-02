@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -37,11 +38,13 @@ public class DbFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        this.getActivity().setContentView(R.layout.fragment_db);
+        //this.getActivity().setContentView(R.layout.fragment_db);
+
+        View v = inflater.inflate(R.layout.fragment_db, container, false);
 
 //        li = (ListView)this.getActivity().findViewById(R.id.bd_lv);
 
-        ListView listview = (ListView)this.getActivity().findViewById(R.id.bd_lv);
+        ListView listview = (ListView)v.findViewById(R.id.bd_lv);
 
         WeatherDbHelper conn = new WeatherDbHelper(this.getContext(), "WeatherDB", null, WeatherDbHelper.DATABASE_VERSION);
 
@@ -65,11 +68,19 @@ public class DbFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TabHost th = (TabHost)getActivity().findViewById(R.id.miContainer);
+                switchTab();
 
             }
         });
 
-        return inflater.inflate(R.layout.fragment_db, container, false);
+        //return inflater.inflate(R.layout.fragment_db, container, false);
+        return v;
+    }
+
+    public void switchTab()
+    {
+        //this.getActivity().setContentView(R.layout.activity_main);
+        BottomNavigationView mio = (BottomNavigationView)this.getActivity().findViewById(R.id.navigation);
+        mio.setSelectedItemId(R.id.navigation_weather);
     }
 }
